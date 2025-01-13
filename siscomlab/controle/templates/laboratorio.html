@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Detalhes do Laboratório</title>
+        {% load static %}
+    </head>
+    <body>
+        <h1>Nome: {{ laboratorio.nome}}</h1>
+        <p>Linhas: {{ laboratorio.linhas }}</p>
+        <p>Colunas: {{ laboratorio.colunas }}</p>
+
+        <style>
+            table {
+                border-collapse: collapse;
+                margin: 20px auto;
+            }
+            td {
+                width: 100px;
+                height: 100px;
+                border: 1px solid #ccc;
+                text-align: center;
+                vertical-align: middle;
+            }
+            .empty {
+                background-color: #f9f9f9;
+            }
+            .machine {
+                background-color: #e0f7fa;
+            }
+            img {
+                width: 50px;
+                height: 50px;
+            }
+            button {
+                margin-top: 5px;
+            }
+        </style>
+
+        <table>
+            {% for linha in tabela %}
+            <tr>
+                {% for maquina in linha %}
+                    {% if maquina %}
+                        <td class="machine">
+                            <img src="{% static 'images/pc.png' %}"  alt="Computador">
+                            <p>{{ maquina.nome }}</p>
+                            <form method="GET" action="{% url 'informar_problema' maquina.id %}" >
+                                {% csrf_token %}
+                                <button type="submit">Informar Problema</button>
+                            </form>
+                        </td>
+                    {% else %}
+                        <td class="empty"></td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+
+        </table>
+
+
+    </body>
+</html>        

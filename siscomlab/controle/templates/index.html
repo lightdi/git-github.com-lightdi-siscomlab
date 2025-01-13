@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lagn="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Lista de Laboratórios</title>
+    </head>
+    <body>
+        <h1>Lista de Laboratórios</h1>
+        <ul>
+            {% for laboratorio in laboratorios %}
+                <li>{{ laboratorio.nome }} - 
+                    <a href="/laboratorio/{{ laboratorio.id }}">Entrar</a>
+                </li>
+            {% endfor %}
+        </ul>    
+    </body>
+</html>
