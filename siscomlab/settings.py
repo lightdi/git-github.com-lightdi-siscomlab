@@ -28,7 +28,7 @@ DEBUG = True
 
 LOGIN_URL = '/login/'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['siscomlab.onrender.com',]
 
 
 # Application definition
